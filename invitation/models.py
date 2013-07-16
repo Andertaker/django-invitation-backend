@@ -4,7 +4,6 @@ import random
 
 from django.core.mail import send_mail
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.contrib.sites.models import Site, RequestSite
 from django.db import models
 from django.template.loader import render_to_string
@@ -86,7 +85,7 @@ class InvitationManager(models.Manager):
 
 
 class Invitation(models.Model):
-    user = models.ForeignKey(User, related_name='invitations')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='invitations')
     email = models.EmailField(_(u'e-mail'))
     key = models.CharField(_(u'invitation key'), max_length=40, unique=True)
     date_invited = models.DateTimeField(_(u'date invited'), default=now())
