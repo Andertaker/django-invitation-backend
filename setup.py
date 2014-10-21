@@ -4,21 +4,21 @@ from distutils.core import setup
 from invitation import get_version, __maintainer__, __email__
 
 
-def compile_translations():
-    try:
-        from django.core.management.commands.compilemessages \
-                                                       import compile_messages
-    except ImportError:
-        return None
-    curdir = os.getcwdu()
-    os.chdir(os.path.join(os.path.dirname(__file__), 'invitation'))
-    try:
-        compile_messages(stderr=sys.stderr)
-    except TypeError:
-        # compile_messages doesn't accept stderr parameter prior to 1.2.4
-        compile_messages()
-    os.chdir(curdir)
-compile_translations()
+#def compile_translations():
+#    try:
+#        from django.core.management.commands.compilemessages \
+#                                                       import compile_messages
+#    except ImportError:
+#        return None
+#    curdir = os.getcwdu()
+#    os.chdir(os.path.join(os.path.dirname(__file__), 'invitation'))
+#    try:
+#        compile_messages(stderr=sys.stderr)
+#    except TypeError:
+#        # compile_messages doesn't accept stderr parameter prior to 1.2.4
+#        compile_messages()
+#    os.chdir(curdir)
+#compile_translations()
 
 
 long_description = open('README.rst').read()
